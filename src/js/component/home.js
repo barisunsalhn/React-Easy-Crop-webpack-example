@@ -1,24 +1,50 @@
-import React from "react";
+import React, { Component } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
+import { Modal, Button } from "react-bootstrap";
+import Cropper from "react-easy-crop";
 //create your first component
-export function Home() {
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+
+class Home extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			show: true,
+			crop: { x: 0, y: 0 },
+			zoom: 1,
+			aspect: 4 / 3
+		};
+	}
+
+	onCropChange = crop => {
+		this.setState({ crop });
+	};
+
+	onCropComplete = (croppedArea, croppedAreaPixels) => {
+		console.log(croppedArea, croppedAreaPixels);
+	};
+
+	onZoomChange = zoom => {
+		this.setState({ zoom });
+	};
+	render() {
+		let originalScreenshotDOMElement = (
+			<Cropper
+				image={
+					"https://images.all-free-download.com/images/graphiclarge/city_building_night_view_216448.jpg"
+				}
+				crop={this.state.crop}
+				zoom={this.state.zoom}
+				aspect={this.state.aspect}
+				onCropChange={this.onCropChange}
+				onCropComplete={this.onCropComplete}
+				onZoomChange={this.onZoomChange}
+			/>
+		);
+		return (
+			<Modal show={true}>
+				<Modal.Body>{originalScreenshotDOMElement}</Modal.Body>
+			</Modal>
+		);
+	}
 }
+export default Home;
