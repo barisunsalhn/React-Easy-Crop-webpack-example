@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Modal, Button } from "react-bootstrap";
 import Cropper from "react-easy-crop";
+import "../../styles/index.scss";
 //create your first component
 
 class Home extends React.Component {
@@ -14,7 +15,7 @@ class Home extends React.Component {
 			aspect: 4 / 3
 		};
 	}
-
+	handleClose = () => console.log("not closing");
 	onCropChange = crop => {
 		this.setState({ crop });
 	};
@@ -30,7 +31,7 @@ class Home extends React.Component {
 		let originalScreenshotDOMElement = (
 			<Cropper
 				image={
-					"https://images.all-free-download.com/images/graphiclarge/city_building_night_view_216448.jpg"
+					"https://images.unsplash.com/photo-1551801841-ecad875a5142?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1268&q=80"
 				}
 				crop={this.state.crop}
 				zoom={this.state.zoom}
@@ -41,8 +42,12 @@ class Home extends React.Component {
 			/>
 		);
 		return (
-			<Modal show={true}>
-				<Modal.Body>{originalScreenshotDOMElement}</Modal.Body>
+			//<div>{originalScreenshotDOMElement}</div>
+
+			<Modal dialogClassName="test" show={true} onHide={this.handleClose}>
+				<Modal.Body style={{ minHeight: "90vw" }}>
+					{originalScreenshotDOMElement}
+				</Modal.Body>
 			</Modal>
 		);
 	}

@@ -9,5 +9,14 @@
     other sylesheets into your bunde as well, e.j:
     
     import 'relative/path/to/stylesheet.scss';
-
+style={{
+					width: "90vw !important",
+					maxWidth: "none !important"
+				}}
 */
+.test {
+    display: block; 
+   
+    max-width: 90vw !important;
+    padding-left: 0px;
+}
