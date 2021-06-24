@@ -31,7 +31,8 @@ class Home extends React.Component {
 		let originalScreenshotDOMElement = (
 			<Cropper
 				image={
-					"https://images.unsplash.com/photo-1551801841-ecad875a5142?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1268&q=80"
+					"http://www.pxleyes.com/images/contests/cloud-panorama/fullsize/Wide-4f8c7ce030a65_hires.jpg"
+					//"http://www.pxleyes.com/images/contests/Flowers-2020/fullsize/Flowers-2020-5ebbc968f354a.jpg"
 				}
 				crop={this.state.crop}
 				zoom={this.state.zoom}
@@ -39,15 +40,17 @@ class Home extends React.Component {
 				onCropChange={this.onCropChange}
 				onCropComplete={this.onCropComplete}
 				onZoomChange={this.onZoomChange}
+				classes={{ containerClassName: "container" }}
+				showGrid={false}
 			/>
 		);
 		return (
 			//<div>{originalScreenshotDOMElement}</div>
 
 			<Modal dialogClassName="test" show={true} onHide={this.handleClose}>
-				<Modal.Body style={{ minHeight: "90vw" }}>
-					{originalScreenshotDOMElement}
-				</Modal.Body>
+				<Modal.Header>Test</Modal.Header>
+				<Modal.Body>{originalScreenshotDOMElement}</Modal.Body>
+				<Modal.Footer>End</Modal.Footer>
 			</Modal>
 		);
 	}

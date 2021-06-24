@@ -15,8 +15,17 @@ style={{
 				}}
 */
 .test {
-    display: block; 
+    
    
+    max-width: max-content;
+
+}
+.container{
+    position: relative !important;
     max-width: 90vw !important;
-    padding-left: 0px;
+}
+img{
+    position: relative !important;
+    
+
 }
